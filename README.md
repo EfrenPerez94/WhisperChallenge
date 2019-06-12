@@ -1,4 +1,4 @@
-# ArkusnexusChallenge
+# WhisperChallenge
 
 The following project is part of an assigment for iOS developers, is intendeed to evaluate:
 
