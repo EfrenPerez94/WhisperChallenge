@@ -18,7 +18,6 @@ The application retrieves Pokémon data from the public **PokeAPI** and provides
 - An **Insights** tab with simple charts (donut/bar) based on current data
 
 ---
-
 ## Requirements
 
 - **Xcode** 16.x or later  
@@ -26,27 +25,39 @@ The application retrieves Pokémon data from the public **PokeAPI** and provides
 - **Swift Package Manager**
   
 ---
-
 ## App Architecture
 
-**Pattern:** *UIKit Coordinators + MVVM*
+**UIKit Coordinators + MVVM**
 
 ---
+## Design Patterns Used
 
+- **Coordinator** 
+- **Dependency Injection**
+- **Facade**
+- **Observer**: SwiftUI/Combine observation
+
+---
+## Key Technical Decisions
+
+- **UIKit shell + SwiftUI features**
+- **Async/Await for networking**
+- **Centralized error model**
+- **`URLSession` + `URLCache` over third-party networking**
+- **SwiftData for persistence**
+- **Centralized error model**
+
+---
 ## Networking
 
 - **Endpoints** (PokeAPI):
   - List: `/pokemon?offset=&limit=`
   - Detail: `/pokemon/{id}`
 - **Caching**: `URLCache` sized for list/detail calls.
-
-## Simulated Network failure (DEBUG only)
-
-To demonstrate error handling + retry, the HTTP client supports a **one-shot** simulated failure in DEBUG:
-- When enabled, the first request throws error.
+- Simulated Network failure (DEBUG only)
+ - To demonstrate error handling + retry, the HTTP client supports a **one-shot** simulated failure in DEBUG: When enabled, the first request throws error.
 
 ---
-
 ## Persistence (SwiftData)
 
 - Model: `CaughtPokemon` persisted locally.  
@@ -55,14 +66,12 @@ To demonstrate error handling + retry, the HTTP client supports a **one-shot** s
 ---
 
 ## Swift Charts (Insights)
-
 - Example charts:
   - **Donut**
   - **Bar**
 - Data is computed from in-app models without hitting extra endpoints.
 
 ---
-
 ## Run Project
 - If you are running the project for the first time:
   - Open in Xcode
@@ -87,14 +96,15 @@ To demonstrate error handling + retry, the HTTP client supports a **one-shot** s
     - Navigates to Caught tab and verifies there is at least one item
 
 ---
-
 ## Contributing
 Please follow standard GitHub guidelines when contributing:
 - [Git Contributing Guidelines](https://github.com/wizeline/wize-docs/blob/master/development/git-contributing-guidelines.md)
 
+---
 ## Demo
 - Attached to the repo you will find a video of the current behaviour of the app.
-
+  
+---
 THANKS FOR READING :)
 
 
