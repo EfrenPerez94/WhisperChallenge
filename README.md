@@ -29,18 +29,7 @@ The application retrieves Pokémon data from the public **PokeAPI** and provides
 
 ## App Architecture
 
-**Pattern:** *UIKit Coordinators + MVVM + SwiftUI embedding*
-
-- **UIKit as the app shell**: navigation via `UINavigationController` and `UITabBarController`.  
-- **Coordinators**: composition root, dependency injection (API service, model container), and screen flow.  
-- **MVVM**: `ViewModel`s expose state as `@Published RequestState<T>`; views render `idle/fetching/loaded/failed`.  
-- **SwiftUI**: feature screens built in SwiftUI, embedded with `UIHostingController` from Coordinators.  
-- **Networking**: `URLSessionHTTPClient` + `PokeAPIService`.  
-- **Persistence**: **SwiftData** (`CaughtPokemon`) for caught Pokémon.  
-- **Caching**: `URLCache` configured in `NetworkConfig`.  
-- **Error handling**: unified via `AppError`, user-visible retry in UI.  
-- **Auto Layout**: small UIKit components with **NSLayoutConstraints** (e.g., an `ErrorBannerView` or a floating button).  
-- **Charts**: **Swift Charts** in **Insights** to visualize distribution/types/stats.
+**Pattern:** *UIKit Coordinators + MVVM*
 
 ---
 
@@ -51,7 +40,7 @@ The application retrieves Pokémon data from the public **PokeAPI** and provides
   - Detail: `/pokemon/{id}`
 - **Caching**: `URLCache` sized for list/detail calls.
 
-### Simulated failure (DEBUG only)
+## Simulated Network failure (DEBUG only)
 
 To demonstrate error handling + retry, the HTTP client supports a **one-shot** simulated failure in DEBUG:
 - When enabled, the first request throws error.
@@ -80,7 +69,7 @@ To demonstrate error handling + retry, the HTTP client supports a **one-shot** s
   - Open PokemonAnalyticsApp.xcodeproj.
   - Select a Simulator
   - Build & Run
-  - 
+    
 - Note: Swift Package Manager will resolve packages automatically on first build. No CocoaPods needed.
 
 ---
@@ -103,7 +92,7 @@ To demonstrate error handling + retry, the HTTP client supports a **one-shot** s
 Please follow standard GitHub guidelines when contributing:
 - [Git Contributing Guidelines](https://github.com/wizeline/wize-docs/blob/master/development/git-contributing-guidelines.md)
 
-## DEMO
+## Demo
 - Attached to the repo you will find a video of the current behaviour of the app.
 
 THANKS FOR READING :)
